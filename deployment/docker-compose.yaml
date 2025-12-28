@@ -43,7 +43,7 @@ services:
       POSTGRES_DB: ${POSTGRES_DB:-audiomusedb}
       POSTGRES_HOST: "localhost" # Service name of the postgres container
       POSTGRES_PORT: "${POSTGRES_PORT:-5432}"
-      REDIS_URL: "${REDIS_URL:-redis://redis:6379/0}" # Connects to the 'redis' service
+      REDIS_URL: "redis://localhost:6379/0" # Connects to the 'redis' service
       AI_MODEL_PROVIDER: "${AI_MODEL_PROVIDER}"
       OPENAI_API_KEY: "${OPENAI_API_KEY}"
       OPENAI_SERVER_URL: "${OPENAI_SERVER_URL}"
