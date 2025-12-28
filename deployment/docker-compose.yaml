@@ -40,7 +40,7 @@ services:
       POSTGRES_USER: ${POSTGRES_USER:-audiomuse}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-audiomusepassword}
       POSTGRES_DB: ${POSTGRES_DB:-audiomusedb}
-      POSTGRES_HOST: "postgres" # Service name of the postgres container
+      POSTGRES_HOST: "host-gateway" # Service name of the postgres container
       POSTGRES_PORT: "${POSTGRES_PORT:-5432}"
       REDIS_URL: "${REDIS_URL:-redis://redis:6379/0}" # Connects to the 'redis' service
       AI_MODEL_PROVIDER: "${AI_MODEL_PROVIDER}"
@@ -57,6 +57,8 @@ services:
       - redis
       #- postgres
     restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
   # AudioMuse-AI RQ Worker service
   audiomuse-ai-worker:
@@ -72,7 +74,7 @@ services:
       POSTGRES_USER: ${POSTGRES_USER:-audiomuse}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-audiomusepassword}
       POSTGRES_DB: ${POSTGRES_DB:-audiomusedb}
-      POSTGRES_HOST: "postgres" # Service name of the postgres container
+      POSTGRES_HOST: "host-gateway" # Service name of the postgres container
       POSTGRES_PORT: "${POSTGRES_PORT:-5432}"
       REDIS_URL: "${REDIS_URL:-redis://redis:6379/0}" # Connects to the 'redis' service
       AI_MODEL_PROVIDER: "${AI_MODEL_PROVIDER}"
@@ -89,6 +91,8 @@ services:
       - redis
       #- postgres
     restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
 # Define volumes for persistent data and temporary files
 volumes:
