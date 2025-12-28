@@ -9,7 +9,7 @@ services:
     volumes:
       - redis-data:/data # Persistent storage for Redis data
     restart: unless-stopped
-    postgres-data:
+    #postgres-data:
 
   # PostgreSQL database service
   #postgres:
