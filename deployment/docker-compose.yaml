@@ -4,8 +4,8 @@ services:
   redis:
     image: redis:7-alpine
     container_name: audiomuse-redis
-    #ports:
-      #- "${REDIS_PORT:-6379}:6379" # Expose Redis port to the host
+    ports:
+      - "${REDIS_PORT:-6379}:6379" # Expose Redis port to the host
     volumes:
       - redis-data:/data # Persistent storage for Redis data
     restart: unless-stopped
@@ -29,8 +29,8 @@ services:
   audiomuse-ai-flask:
     image: ghcr.io/neptunehub/audiomuse-ai:latest # Reflects deployment.yaml
     container_name: audiomuse-ai-flask-app
-    #ports:
-      #- "${FRONTEND_PORT:-8000}:8000" # Map host port 8000 to container port 8000
+    ports:
+      - "${FRONTEND_PORT:-8000}:8000" # Map host port 8000 to container port 8000
     environment:
       SERVICE_TYPE: "flask" # Tells the container to run the Flask app
       MEDIASERVER_TYPE: "jellyfin" # Specify the media server type
