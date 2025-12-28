@@ -55,7 +55,7 @@ services:
       - temp-audio-flask:/app/temp_audio # Volume for temporary audio files
     depends_on:
       - redis
-      - postgres
+      #- postgres
     restart: unless-stopped
 
   # AudioMuse-AI RQ Worker service
@@ -87,7 +87,7 @@ services:
       - temp-audio-worker:/app/temp_audio # Volume for temporary audio files
     depends_on:
       - redis
-      - postgres
+      #- postgres
     restart: unless-stopped
 
 # Define volumes for persistent data and temporary files
